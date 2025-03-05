@@ -24,6 +24,8 @@ Esse dataset contém registros de alunos com notas das provas **P1** e **P2**, p
 
 ### 2.2 Interpretação da Árvore de Decisão
 
+![tree](https://raw.githubusercontent.com/gb-cs-rt/aprendizado_indutivo_cc7711/refs/heads/main/criterio_provas/tree.png)
+
 A árvore gerada reflete um modelo que classifica os alunos conforme suas notas e percentual de faltas. Alguns pontos importantes:
 
 - O primeiro critério de divisão foi **P1 <= 24.5**, indicando que a primeira prova tem grande influência na classificação dos alunos.
@@ -31,6 +33,8 @@ A árvore gerada reflete um modelo que classifica os alunos conforme suas notas 
 - Nós com **entropia = 0** indicam classificações totalmente puras, ou seja, onde todos os exemplos pertencem à mesma classe (**Aprovado** ou **Reprovado**). Isso sugere que os dados estavam bem estruturados para permitir uma separação clara.
 
 ### 2.3 Análise da Matriz de Confusão
+
+![confusion_matrix](https://raw.githubusercontent.com/gb-cs-rt/aprendizado_indutivo_cc7711/refs/heads/main/criterio_provas/confusion_matrix.png)
 
 A matriz de confusão gerada confirma que o modelo conseguiu classificar corretamente todos os exemplos disponíveis, pois:
 
@@ -62,29 +66,35 @@ Este conjunto de dados trata da presença de **grass grubs** (uma praga agrícol
 
 O objetivo do modelo de árvore de decisão é prever a classe **GG_new** (quantidade de praga) a partir dos demais atributos.
 
-### 3.2 Discussão dos Resultados
+### 3.2 Interpretação da Árvore de Decisão
 
-1. **Estrutura da Árvore de Decisão**  
-   - A árvore resultante é relativamente grande, indicando que o algoritmo encontrou várias regras de decisão específicas para diferenciar as quatro classes (**low, average, high, veryhigh**).
-   - Cada divisão (nó) da árvore usa um atributo para separar os exemplos, com base em como melhor reduz a **entropia** (ganho de informação).
-   - A complexidade pode indicar que o conjunto de dados tem diversos fatores que influenciam na quantidade de pragas, como ano, localização e tipo de irrigação.
+![tree](https://raw.githubusercontent.com/gb-cs-rt/aprendizado_indutivo_cc7711/refs/heads/main/grub_damage/tree.png)
 
-2. **Matriz de Confusão**  
-   - A matriz de confusão mostra a predição exata de todas as instâncias em suas classes corretas:  
-     - **49 instâncias** classificadas como **low** (corretamente).  
-     - **41 instâncias** classificadas como **average** (corretamente).  
-     - **46 instâncias** classificadas como **high** (corretamente).  
-     - **19 instâncias** classificadas como **veryhigh** (corretamente).  
+- A árvore resultante é relativamente grande, indicando que o algoritmo encontrou várias regras de decisão específicas para diferenciar as quatro classes (**low, average, high, veryhigh**).
+- Cada divisão (nó) da árvore usa um atributo para separar os exemplos, com base em como melhor reduz a **entropia** (ganho de informação).
+- A complexidade pode indicar que o conjunto de dados tem diversos fatores que influenciam na quantidade de pragas, como ano, localização e tipo de irrigação.
+
+### 3.3 Análise da Matriz de Confusão
+
+![confusion_matrix](https://raw.githubusercontent.com/gb-cs-rt/aprendizado_indutivo_cc7711/refs/heads/main/grub_damage/confusion_matrix.png)
+
+- A matriz de confusão mostra a predição exata de todas as instâncias em suas classes corretas:  
+   - **49 instâncias** classificadas como **low** (corretamente).  
+   - **41 instâncias** classificadas como **average** (corretamente).  
+   - **46 instâncias** classificadas como **high** (corretamente).  
+   - **19 instâncias** classificadas como **veryhigh** (corretamente).  
    - Não há nenhum erro de classificação (**falsos positivos** ou **falsos negativos**), resultando em **100% de acurácia para o conjunto de treinamento**.
 
-3. **Interpretação e Cuidados**  
-   - A classificação perfeita sugere que os atributos disponíveis são suficientes para **separar completamente** as quatro classes dentro deste conjunto de dados. No entanto, assim como no caso anterior, é importante lembrar que **usar o mesmo conjunto para treinar e avaliar** tende a superestimar a capacidade de generalização do modelo.
-   - Para verificar se o modelo realmente aprendeu padrões que se aplicam a novos dados (e não apenas "decorou" o conjunto de treinamento), seria recomendável fazer uma **validação cruzada** ou usar um **conjunto de teste separado**.
+### 3.4 Interpretação e Cuidados
 
-4. **Conclusão**  
-   - O modelo conseguiu criar regras específicas para cada faixa de infestação (**low, average, high, veryhigh**) de forma a classificar todos os exemplos corretamente.
-   - A alta complexidade da árvore pode indicar muitos caminhos de decisão, cada um focado em um subconjunto de exemplos.
-   - Se o objetivo for aplicar esse modelo a dados futuros, é fundamental avaliar se esses mesmos padrões se mantêm e se o desempenho se sustenta em novos cenários.
+- A classificação perfeita sugere que os atributos disponíveis são suficientes para **separar completamente** as quatro classes dentro deste conjunto de dados. No entanto, assim como no caso anterior, é importante lembrar que **usar o mesmo conjunto para treinar e avaliar** tende a superestimar a capacidade de generalização do modelo.
+- Para verificar se o modelo realmente aprendeu padrões que se aplicam a novos dados (e não apenas "decorou" o conjunto de treinamento), seria recomendável fazer uma **validação cruzada** ou usar um **conjunto de teste separado**.
+
+### 3.5 Conclusão  
+
+- O modelo conseguiu criar regras específicas para cada faixa de infestação (**low, average, high, veryhigh**) de forma a classificar todos os exemplos corretamente.
+- A alta complexidade da árvore pode indicar muitos caminhos de decisão, cada um focado em um subconjunto de exemplos.
+- Se o objetivo for aplicar esse modelo a dados futuros, é fundamental avaliar se esses mesmos padrões se mantêm e se o desempenho se sustenta em novos cenários.
 
 ---
 
