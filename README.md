@@ -72,6 +72,8 @@ O objetivo do modelo de árvore de decisão é prever a classe **GG_new** (quant
 
 - A árvore resultante é relativamente grande, indicando que o algoritmo encontrou várias regras de decisão específicas para diferenciar as quatro classes (**low, average, high, veryhigh**).
 - Cada divisão (nó) da árvore usa um atributo para separar os exemplos, com base em como melhor reduz a **entropia** (ganho de informação).
+- O primeiro atributo a ser considerado na árvore é **damage_rankRJT**, que se for menor que **2.5** já indica que a infestação de pragas será classificada como **"low"**, o que faz sentido, já que uma maior quantidade de pragas resultam em um dano maior.
+- Outros fatores que influenciam significativamente na classificação incluem **year_zone** e **dry_or_irr**, refletindo a importância da localização e das condições ambientais na infestação de grass grubs.
 - A complexidade pode indicar que o conjunto de dados tem diversos fatores que influenciam na quantidade de pragas, como ano, localização e tipo de irrigação.
 
 ### 3.3 Análise da Matriz de Confusão
