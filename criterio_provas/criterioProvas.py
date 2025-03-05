@@ -5,7 +5,6 @@ from sklearn.tree import DecisionTreeClassifier
 import matplotlib.pyplot as plt
 from scipy.io import arff
 
-
 data,meta = arff.loadarff('./CriterioProvas.arff')
 
 attributes = meta.names()
@@ -21,8 +20,8 @@ Arvore = DecisionTreeClassifier(criterion='entropy').fit(features, target)
 
 plt.figure(figsize=(10, 6.5))
 tree.plot_tree(Arvore, feature_names=['P1','P2','PercFalta'],class_names=['Aprovado', 'Reprovado'],filled=True, rounded=True)
-plt.show()
+plt.savefig('tree.png', format='png', dpi=300)
 
-fix, ax = plt.subplots(figsize=(25, 10))
+fix, ax = plt.subplots(figsize=(15, 10))
 metrics.ConfusionMatrixDisplay.from_estimator(Arvore,features,target,display_labels=['Aprovado', 'Reprovado'], values_format='d', ax=ax)
-plt.show()
+plt.savefig('confusion_matrix.png', format='png', dpi=300)
